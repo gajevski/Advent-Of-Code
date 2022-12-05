@@ -6,16 +6,13 @@ function countPriorities(str) {
         const middle = Math.floor(string.length / 2);
         const leftString = string.slice(0, middle);
         const rightString = string.slice(middle, string.length);
-        const dividedString = [leftString, rightString];
         let sharedLetter = '';
 
-        dividedString[0].split('').forEach((char) => {
-            dividedString[1].split('').forEach((char2) => {
-                if (char === char2) {
-                    sharedLetter += char;
-                }
-            });
-        });
+        for (let i = 0; i < rightString.length; i++) {
+            if (leftString.includes(rightString[i])) {
+                sharedLetter += rightString[i];
+            }
+        }
 
         const sharedLetterSet = new Set(sharedLetter);
 
